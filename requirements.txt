@@ -1,0 +1,6 @@
+kivy
+kivymd
+pandas
+opencv-python
+pyzbar
+requests

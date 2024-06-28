@@ -1,0 +1,86 @@
+WindowManager:
+    MainScreen:
+    SearchScreen:
+    ModifyScreen:
+
+<MainScreen>:
+    name: "main"
+    MDLabel:
+        text: "Pantalla Principal"
+        halign: "center"
+    MDRaisedButton:
+        text: "Buscar Artículo"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        on_release:
+            app.root.current = "search"
+            root.manager.transition.direction = "left"
+
+<SearchScreen>:
+    name: "search"
+    MDTextField:
+        id: search_input
+        hint_text: "Buscar por código de barras o nombre"
+        pos_hint: {"center_x": 0.5, "center_y": 0.7}
+        size_hint_x: 0.8
+    MDCheckbox:
+        id: search_by_barcode
+        group: "search_by"
+        pos_hint: {"center_x": 0.4, "center_y": 0.6}
+    MDLabel:
+        text: "Buscar por código de barras"
+        pos_hint: {"center_x": 0.6, "center_y": 0.6}
+    MDCheckbox:
+        id: search_by_name
+        group: "search_by"
+        pos_hint: {"center_x": 0.4, "center_y": 0.55}
+    MDLabel:
+        text: "Buscar por nombre"
+        pos_hint: {"center_x": 0.6, "center_y": 0.55}
+    MDRaisedButton:
+        text: "Buscar"
+        pos_hint: {"center_x": 0.5, "center_y": 0.45}
+        on_release: root.search_item()
+    MDLabel:
+        id: result_label
+        text: ""
+        halign: "center"
+        pos_hint: {"center_x": 0.5, "center_y": 0.35}
+    MDRaisedButton:
+        text: "Volver"
+        pos_hint: {"center_x": 0.5, "center_y": 0.25}
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+
+<ModifyScreen>:
+    name: "modify"
+    MDTextField:
+        id: barcode_input
+        hint_text: "Código de barras"
+        pos_hint: {"center_x": 0.5, "center_y": 0.7}
+        size_hint_x: 0.8
+    MDTextField:
+        id: price_input
+        hint_text: "Nuevo precio"
+        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+        size_hint_x: 0.8
+    MDTextField:
+        id: stock_input
+        hint_text: "Nuevo stock"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        size_hint_x: 0.8
+    MDRaisedButton:
+        text: "Modificar"
+        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        on_release: root.modify_item()
+    MDLabel:
+        id: status_label
+        text: ""
+        halign: "center"
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+    MDRaisedButton:
+        text: "Volver"
+        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
